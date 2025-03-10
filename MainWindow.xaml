@@ -1,0 +1,91 @@
+﻿<Window x:Class="up10_03.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:up10_03"
+        mc:Ignorable="d"
+        Title="Мастер Пол"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="400"
+        MinWidth="700"
+        Height="450"
+        Width="800"
+        Background="#F4E8D3">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Frame
+            Grid.Column="1"
+            Grid.Row="1"
+            Name="Frame1"
+            NavigationUIVisibility="Hidden"
+            Source="/Pages/MainPage.xaml"/>
+
+        <StackPanel
+            Orientation="Horizontal"
+            Grid.Row="0"
+            Grid.ColumnSpan="2">
+            <Image
+                Margin="5"
+                Source="/Images/Мастер пол.ico"
+                Stretch="UniformToFill"/>
+            <StackPanel
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock
+                    FontSize="22"
+                    Text="Мастер Пол"
+                    FontWeight="Bold"/>
+                <TextBlock
+                    Text="Менять пол можно и нужно!"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Border
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Height="2"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <GradientStop Color="#FF67BA80" Offset="0"/>
+                    <GradientStop Color="#0067BA80" Offset="0.55"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <StackPanel
+            Orientation="Vertical"
+            Grid.Row="1"
+            Grid.Column="0">
+            <Button
+                Height="30"
+                Margin="5"
+                Content="Главная"
+                Click="ButtonHome"
+                Background="White"/>
+            <Button
+                Height="30"
+                Margin="5,0,5,5"
+                Content="Список партнеров"
+                Click="ButtonPartners"
+                Background="White"/>
+            <Button
+                Height="30"
+                Margin="5,0,5,5"
+                Content="История"
+                Click="ButtonHistory"
+                Background="White"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
