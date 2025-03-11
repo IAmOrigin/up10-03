@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using up10_03.Classes;
 
 namespace up10_03.Pages
 {
-	/// <summary>
-	/// Логика взаимодействия для PartnersPage.xaml
-	/// </summary>
 	public partial class PartnersPage : Page
 	{
 		Entities entities = new Entities();
@@ -32,7 +18,7 @@ namespace up10_03.Pages
 				{
 					if (entity.PartnerId == partner.Id)
 					{
-						sum += Convert.ToInt32(entity.Count);
+						sum += (int)entity.Count;
 					}
 				}
 				if (sum  < 10000)
@@ -60,15 +46,13 @@ namespace up10_03.Pages
 			var editedItem = ListViewPartners.SelectedItem as Partner;
 			Manager.MainFrame.Navigate(new PartnerEditor(editedItem.Id));
 		}
-
-		private void ButtonBack(object sender, RoutedEventArgs e)
-		{
-			Manager.MainFrame.Navigate(new MainPage());
-		}
-
 		private void ButtonNew(object sender, RoutedEventArgs e)
 		{
 			Manager.MainFrame.Navigate(new PartnerEditor(0));
+		}
+		private void ButtonBack(object sender, RoutedEventArgs e)
+		{
+			Manager.MainFrame.Navigate(new MainPage());
 		}
 	}
 }
