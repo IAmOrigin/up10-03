@@ -29,7 +29,7 @@ namespace up10_03
         public string Adress { get; set; }
         public string Inn { get; set; }
         public Nullable<int> Rating { get; set; }
-        public int Discount { get; set; }
+    
         public virtual ICollection<PartnerProduct> PartnerProduct { get; set; }
     }
 }
