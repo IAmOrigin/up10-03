@@ -44,7 +44,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductId" Type="int" />
+          <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Coefficent" Type="float" />
         </EntityType>
         <EntityType Name="ProductType">
@@ -97,20 +97,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductDefect_ToTable">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ProductDefect" Type="Self.ProductDefect" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProductDefect">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PartnerProduct" EntityType="Self.PartnerProduct" Schema="dbo" store:Type="Tables" />
@@ -128,10 +114,6 @@
           <AssociationSet Name="FK_Product_ToTable" Association="Self.FK_Product_ToTable">
             <End Role="ProductType" EntitySet="ProductType" />
             <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductDefect_ToTable" Association="Self.FK_ProductDefect_ToTable">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductDefect" EntitySet="ProductDefect" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -177,16 +159,14 @@
           <Property Name="MinPrice" Type="Double" />
           <NavigationProperty Name="PartnerProduct" Relationship="Self.FK_PartnerProduct_ToTable" FromRole="Product" ToRole="PartnerProduct" />
           <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ToTable" FromRole="Product" ToRole="ProductType" />
-          <NavigationProperty Name="ProductDefect" Relationship="Self.FK_ProductDefect_ToTable" FromRole="Product" ToRole="ProductDefect" />
         </EntityType>
         <EntityType Name="ProductDefect">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Coefficent" Type="Double" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductDefect_ToTable" FromRole="ProductDefect" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -239,20 +219,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductDefect_ToTable">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ProductDefect" Type="Self.ProductDefect" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProductDefect">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Partner" EntityType="Self.Partner" />
           <EntitySet Name="PartnerProduct" EntityType="Self.PartnerProduct" />
@@ -270,10 +236,6 @@
           <AssociationSet Name="FK_Product_ToTable" Association="Self.FK_Product_ToTable">
             <End Role="ProductType" EntitySet="ProductType" />
             <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductDefect_ToTable" Association="Self.FK_ProductDefect_ToTable">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductDefect" EntitySet="ProductDefect" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -323,7 +285,7 @@
             <EntityTypeMapping TypeName="Model.ProductDefect">
               <MappingFragment StoreEntitySet="ProductDefect">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Coefficent" ColumnName="Coefficent" />
               </MappingFragment>
             </EntityTypeMapping>

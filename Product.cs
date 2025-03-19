@@ -17,7 +17,6 @@ namespace up10_03
         public Product()
         {
             this.PartnerProduct = new HashSet<PartnerProduct>();
-            this.ProductDefect = new HashSet<ProductDefect>();
         }
     
         public int Id { get; set; }
@@ -28,6 +27,5 @@ namespace up10_03
     
         public virtual ICollection<PartnerProduct> PartnerProduct { get; set; }
         public virtual ProductType ProductType { get; set; }
-        public virtual ICollection<ProductDefect> ProductDefect { get; set; }
     }
 }

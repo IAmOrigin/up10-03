@@ -15,9 +15,7 @@ namespace up10_03
     public partial class ProductDefect
     {
         public int Id { get; set; }
-        public Nullable<int> ProductId { get; set; }
+        public string Name { get; set; }
         public Nullable<double> Coefficent { get; set; }
-    
-        public virtual Product Product { get; set; }
     }
 }
