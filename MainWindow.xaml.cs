@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System;
+using System.Windows;
 using up10_03.Classes;
 using up10_03.Pages;
 
@@ -23,5 +25,9 @@ namespace up10_03
 		{
 			Manager.MainFrame.Navigate(new HistoryPage());
 		}
-	}
+		private void ButtonCalculate(object sender, RoutedEventArgs e)
+		{
+			Manager.MainFrame.Navigate(new CalculationPage());
+		}
+    }
 }

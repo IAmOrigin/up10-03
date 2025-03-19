@@ -2,7 +2,7 @@
 
 namespace up10_03.Classes
 {
-	internal class Calculation
+	public class Calculation
 	{
 		Entities entities = new Entities();
 		public int CalculateMaterial(int idTypeProduct, int idProduct, int count, float height,	float width)
@@ -13,10 +13,12 @@ namespace up10_03.Classes
 				var type = entities.ProductType.Find(idTypeProduct);
 				double countMaterial = (double)(height * width * type.Coefficient);
 				double result = (double)(countMaterial + countMaterial * defect.Coefficent);
+				result *= count;
 				return (int)Math.Ceiling(result);
-			}
-			catch
+			}	
+			catch (Exception ex) 
 			{
+				Console.WriteLine($"Ошибка при расчете: {ex.Message}");
 				return -1;
 			}
 		}

@@ -85,6 +85,12 @@
                 Content="История"
                 Click="ButtonHistory"
                 Background="White"/>
+            <Button
+                Height="30"
+                Margin="5,0,5,5"
+                Content="Расчет материала"
+                Click="ButtonCalculate"
+                Background="White"/>
         </StackPanel>
 
     </Grid>
